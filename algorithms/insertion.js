@@ -1,21 +1,19 @@
 module.exports = (data, COLUMN) => {
   const sortStart = new Date()
 
-  // Take only the data we need to sort
-  let tail = data
-  let head = [tail.shift()]
+  const tail = data
+  const head = [tail.shift()]
 
   let sortCalls = 0
 
   while (tail.length > 0) {
-    const next = tail.shift() // 7
-    let inserted = false
+    const next = tail.shift()
 
     for (let i = head.length - 1; i >= 0; i--) {
       sortCalls++
 
-      const nextVal = parseInt(next[COLUMN])
-      const headVal = parseInt(head[i][COLUMN])
+      const nextVal = parseInt(next[COLUMN], 10)
+      const headVal = parseInt(head[i][COLUMN], 10)
 
       if (i === 0) {
         head.splice(i, 0, next)
@@ -27,7 +25,7 @@ module.exports = (data, COLUMN) => {
         break
       }
 
-      if (headVal > nextVal && parseInt(head[i-1][COLUMN]) <= nextVal) { // 1 > 1
+      if (headVal > nextVal && parseInt(head[i - 1][COLUMN], 10) <= nextVal) { // 1 > 1
         head.splice(i, 0, next)
         break
       }
