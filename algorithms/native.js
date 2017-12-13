@@ -11,8 +11,8 @@ module.exports = (data, COLUMN) => {
   const sorted = data.sort((x, y) => {
     sortCalls++
 
-    const a = x[COLUMN]
-    const b = y[COLUMN]
+    const a = Number(x[COLUMN])
+    const b = Number(y[COLUMN])
 
     // a is less than b by the ordering criterion
     if (a < b) {
@@ -32,7 +32,7 @@ module.exports = (data, COLUMN) => {
 
   const sortCallsPerRow = sortCalls / data.length
 
-  console.log(`Done sorting data. Lowest ${COLUMN}: ${data[0][COLUMN]}, Highest ${COLUMN}: ${data[data.length - 1][COLUMN]}`)
+  console.log(`NATIVE: Done sorting data. Lowest ${COLUMN}: ${data[0][COLUMN]}, Highest ${COLUMN}: ${data[data.length - 1][COLUMN]}`)
   console.log(`Took ${sortCalls} calls, or ${sortCallsPerRow} calls per row (${sortDuration}ms)`)
 
   return sorted

@@ -1,7 +1,10 @@
 const csv = require('csvtojson')
 
 // Require algorithm implementation
-const sort = require('./algorithms/native')
+const native = require('./algorithms/native')
+const insertion = require('./algorithms/insertion')
+const bubble = require('./algorithms/bubble')
+const shell = require('./algorithms/shell')
 
 // Path to data file and column to sort on
 const CSV_FILE='./datasets/ted_main.csv'
@@ -29,7 +32,11 @@ csv()
     console.log(`Available Columns: ${Object.keys(data[0])}`)
 
     // Call the sort algorithm with `data` and the key for the column to sort on
-    sort(data, COLUMN)
+    native(data, COLUMN)
+    insertion(data, COLUMN)
+    bubble(data, COLUMN)
+    shell(data, COLUMN)
+    
   })
 
 // Example output
